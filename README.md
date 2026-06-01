@@ -1,31 +1,34 @@
-# ```eof
+# 🌹 Special Romantic Gift - Experience Site
 
----
+Este projeto é um **microsite personalizado e mobile-first**, desenvolvido como uma experiência digital exclusiva para acompanhar uma noite romântica especial. O objetivo foi criar uma interface altamente sofisticada, minimalista e emocionante que unisse tecnologia de ponta, design elegante inspirado em marcas de luxo e resgate de memórias afetivas.
 
-## 📸 Guia Simples: Como Colocar Suas Fotos sem Erro (Via GitHub)
+## ✨ Características do Projeto
 
-A forma mais profissional e segura de colocar as fotos de vocês no site (evitando usar links de sites de terceiros que expiram ou param de funcionar) é subir as imagens diretamente no seu próprio repositório do GitHub. É muito simples:
+- **Estética Dark & Gold:** Identidade visual inspirada em marcas de alta costura e hotéis boutique, utilizando tons de preto fosco, grafite e detalhes em dourado champanhe.
+- **Desenvolvimento Mobile-First:** Interface totalmente projetada e otimizada para smartphones, garantindo o enquadramento perfeito ao ser acessada via QR Code.
+- **Interatividade Fluida:** Painéis modais dinâmicos que deslizam suavemente de baixo para cima utilizando transições puras de CSS (`cubic-bezier` e `backdrop-filter` de desfoque), proporcionando a sensação de um aplicativo nativo.
+- **Linha do Tempo de Memórias:** Uma jornada cronológica e visual contando a história do casal através de textos dedicados e fotos integradas.
+- **Cardápio Digital Integrado:** Apresentação elegante do menu planejado para a noite (bebidas, prato principal e sobremesa).
+- **Trilha Sonora Dinâmica:** Integração direta via link com a playlist oficial do casal no Spotify.
+- **Efeito de Partículas Ambiente:** Sistema em JavaScript que gera pequenos corações dourados flutuantes de forma aleatória no plano de fundo.
 
-### Passo 1: Prepare as suas fotos no computador
-1. Escolha a **foto principal** do casal e renomeie o arquivo para: `principal.jpg`.
-2. Escolha até 3 fotos marcantes para a linha do tempo e renomeie para: `historia1.jpg`, `historia2.jpg` e `historia3.jpg`.
-*(Dica: Se as fotos estiverem em formato `.png`, você pode mudar a extensão do código de `.jpg` para `.png` ou converter as fotos para `.jpg`).*
+## 🛠️ Tecnologias Utilizadas
 
-### Passo 2: Crie a pasta no seu GitHub
-1. Abra o seu repositório do GitHub na internet (aquele onde você colocou o `index.html`).
-2. Clique no botão **"Add file"** > **"Create new file"**.
-3. No campo onde você digita o nome do arquivo, escreva exatamente: `fotos/` (com a barra no final). 
-4. Ao digitar a barra `/`, o GitHub entende automaticamente que é para criar uma pasta chamada **fotos**.
-5. Crie um arquivo temporário qualquer dentro dela (pode escrever `readme.txt` no nome e salvar) só para fixar a pasta.
+- **HTML5:** Estruturação semântica da página.
+- **CSS3 Avançado:** Animações de flutuação e pulsação (`@keyframes`), filtros de desfoque, gradientes radiais e responsividade adaptativa.
+- **JavaScript (Vanilla):** Lógica limpa para manipulação de estados dos painéis (abrir/fechar) e renderização das partículas de fundo.
+- **Google Fonts:** Tipografia premium combinando as fontes *Cinzel* (elegância serifada clássica) e *Montserrat* (modernidade sans-serif).
+- **FontAwesome v6:** Biblioteca de ícones vetoriais de alta resolução para os botões e detalhes românticos.
 
-### Passo 3: Faça o Upload das Fotos
-1. Entre na pasta **fotos** que você acabou de criar no GitHub.
-2. Clique em **"Add file"** > **"Upload files"**.
-3. Arraste as suas imagens (`principal.jpg`, `historia1.jpg`, etc.) diretamente para lá e clique em salvar mudanças ("Commit changes").
+## 📁 Estrutura do Repositório
 
-**Prontinho!** O código que montei acima já está programado para procurar a foto principal e as fotos da linha do tempo dentro dessa pasta `fotos/`. Se por acaso alguma foto não carregar, ou se você decidir não colocar fotos na linha do tempo, a programação vai detectar o erro e esconder o "quadro" da foto automaticamente, mantendo o design lindo e limpo!
-
-### 🔗 Onde colocar o seu link do Spotify:
-* Na **linha 198** do código, mude o texto `SUA_PLAYLIST_DO_SPOTIFY_AQUI` para o link real da playlist que você montou.
-
-Seu site está completo, ultra-romântico, rápido de carregar no celular e totalmente sob seu controle. Se precisar de ajuda para alterar qualquer detalhe da receita ou quiser mais alguma ideia, estou aqui!
+```text
+/
+├── index.html          # Código-fonte principal do site (sem comentários)
+├── README.md           # Documentação completa do projeto
+└── fotos/              # Diretório local para armazenamento das imagens
+    ├── principal.jpg   # Foto de capa principal (exibida no porta-retratos oval)
+    ├── historia1.jpg   # Imagem do marco 1 na linha do tempo
+    ├── historia2.jpg   # Imagem do marco 2 na linha do tempo
+    ├── historia3.jpg   # Imagem do marco 3 na linha do tempo
+    └── historia4.jpg   # Imagem de encerramento do marco atual
