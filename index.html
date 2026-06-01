@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Amor</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #080808;
+            font-family: 'Montserrat', sans-serif;
+            color: #f5ebe0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #151413 0%, #080808 100%);
+            border-left: 1px solid #1f1a14;
+            border-right: 1px solid #1f1a14;
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .background-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .couple-photo-frame {
+            width: 140px;
+            height: 190px;
+            border-radius: 70px;
+            border: 1px solid #d4af37;
+            padding: 6px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .couple-photo-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 65px;
+            overflow: hidden;
+            background-color: #1a1816;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .couple-photo-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            font-size: 2.5rem;
+            color: #40372c;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .heart-glow {
+            color: #d4af37;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+            animation: pulse 2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            font-size: 1.8rem;
+            color: #d4af37;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #a69480;
+            margin-bottom: 30px;
+            z-index: 1;
+        }
+
+        .dedication {
+            font-style: italic;
+            font-weight: 300;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #e6dacb;
+            margin-bottom: 40px;
+            padding: 0 10px;
+            z-index: 1;
+        }
+
+        .menu-options {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 1;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: rgba(26, 24, 22, 0.4);
+            border: 1px solid #332b21;
+            border-radius: 30px;
+            color: #f2e6d9;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:active {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: #d4af37;
+            transform: scale(0.97);
+        }
+
+        .btn i {
+            color: #d4af37;
+            font-size: 0.9rem;
+        }
+
+        .panel {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%);
+            width: 100%;
+            max-width: 450px;
+            height: 100%;
+            background: rgba(8, 8, 8, 0.98);
+            z-index: 999;
+            transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+            opacity: 0;
+            padding: 40px 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            border-top: 1px solid #332b21;
+            backdrop-filter: blur(15px);
+        }
+
+        .panel.active {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            border-bottom: 1px solid #1f1a14;
+            padding-bottom: 15px;
+        }
+
+        .panel-title {
+            font-family: 'Cinzel', serif;
+            color: #d4af37;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: #a69480;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+
+        .close-btn:active {
+            color: #d4af37;
+        }
+
+        .menu-section {
+            margin-bottom: 25px;
+        }
+
+        .menu-section-title {
+            font-family: 'Cinzel', serif;
+            color: #a69480;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-name {
+            font-weight: 500;
+            color: #f2e6d9;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .menu-item-desc {
+            font-size: 0.8rem;
+            color: #8c8070;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #332b21, transparent);
+            margin: 20px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+            margin-top: 10px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 1px;
+            height: 95%;
+            background: #2b251e;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '\f004';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: -24px;
+            top: 2px;
+            background: #080808;
+            color: #d4af37;
+            font-size: 10px;
+            width: 13px;
+            height: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-date {
+            font-family: 'Cinzel', serif;
+            color: #d4af37;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .timeline-title {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #f2e6d9;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            font-size: 0.8rem;
+            color: #a69480;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+
+        .timeline-photo {
+            width: 100%;
+            max-height: 180px;
+            border-radius: 12px;
+            border: 1px solid #1f1a14;
+            overflow: hidden;
+            background-color: #121110;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .timeline-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="background-hearts"></div>
+
+        <div class="couple-photo-frame">
+            <div class="couple-photo-inner">
+                <img src="fotos/principal.jpg" alt="Nossa Foto" onerror="this.style.display='none';">
+            </div>
+        </div>
+        
+        <div class="heart-glow">
+            <i class="fa-solid fa-heart"></i>
+        </div>
+        
+        <h1>Para o Meu Amor</h1>
+        <div class="subtitle">Uma Noite Inesquecível Para Uma Mulher Inesquecível</div>
+        
+        <div class="dedication">
+            "Feito com todo o carinho para a mulher que é o amor da minha vida."
+        </div>
+
+        <div class="menu-options">
+            <a href="https://open.spotify.com/playlist/373lbdzKS57s3KDLbCNSht?si=ApAdqfvVQJq9vt9SJgpxzA" target="_blank" class="btn">
+                <i class="fa-solid fa-music"></i> Nossa Trilha Sonora
+            </a>
+
+            <button class="btn" onclick="openPanel('menu-panel')">
+                <i class="fa-solid fa-utensils"></i> O Menu da Noite
+            </button>
+
+            <button class="btn" onclick="openPanel('timeline-panel')">
+                <i class="fa-solid fa-calendar-days"></i> Nossa História
+            </button>
+        </div>
+    </div>
+
+    <div id="menu-panel" class="panel">
+        <div class="panel-header">
+            <span class="panel-title">O Menu Especial</span>
+            <button class="close-btn" onclick="closePanel('menu-panel')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <div class="menu-section">
+            <div class="menu-section-title">Para Harmonizar</div>
+            <div class="menu-item-name">Água com gás | H2O.</div>
+            <div class="menu-item-desc">Simples mas funcional.</div>
+        </div>
+
+        <div class="menu-divider"></div>
+
+        <div class="menu-section">
+            <div class="menu-section-title">Prato Principal</div>
+            <div class="menu-item-name">Risoto de Gorgonzola & Filé Mignon</div>
+            <div class="menu-item-desc">Arroz arbóreo cozido lentamente, envolto em queijo gorgonzola cremoso e coroado com tiras suculentas de filé mignon seladas na manteiga de alho.</div>
+        </div>
+
+        <div class="menu-divider"></div>
+
+        <div class="menu-section">
+            <div class="menu-section-title">O Grand Finale</div>
+            <div class="menu-item-name">Petit Gâteau de Chocolate Belga</div>
+            <div class="menu-item-desc">Bolo quente de chocolate com interior derretido, servido com gelato de creme e folha de hortelã fresca para finalizar a experiência gastronômica.</div>
+        </div>
+    </div>
+
+    <div id="timeline-panel" class="panel">
+        <div class="panel-header">
+            <span class="panel-title">Nossa História</span>
+            <button class="close-btn" onclick="closePanel('timeline-panel')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="timeline-date">O Início</div>
+                <div class="timeline-title">Nossa primeira foto!</div>
+                <div class="timeline-desc">Como mesmo tão bonita, você se escondia (espero que não de vergonha).</div>
+                <div class="timeline-photo">
+                    <img src="fotos/historia1.jpg" alt="Início" onerror="this.onerror=null; this.parentElement.style.display='none';">
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">O desenrolar</div>
+                <div class="timeline-title">Os Andarilhos</div>
+                <div class="timeline-desc">Uma das melhores épocas, onde tudo era muito escondido, mas se era com você, valia a pena.</div>
+                <div class="timeline-photo">
+                    <img src="fotos/historia2.jpg" alt="Primeiro Beijo" onerror="this.onerror=null; this.parentElement.style.display='none';">
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Nós</div>
+                <div class="timeline-title">Parceiros de tudo</div>
+                <div class="timeline-desc">Você é minha melhor companhia.</div>
+                <div class="timeline-photo">
+                    <img src="fotos/historia3.jpg" alt="Momentos" onerror="this.onerror=null; this.parentElement.style.display='none';">
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Hoje</div>
+                <div class="timeline-title">E espero ser para todo o sempre...</div>
+                <div class="timeline-desc">Espero passar toda a minha vida ao seu lado. Amo você!</div>
+                <div class="timeline-photo">
+                    <img src="fotos/historia4.jpg" alt="Hoje" onerror="this.onerror=null; this.parentElement.style.display='none';">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function openPanel(id) {
+            const panel = document.getElementById(id);
+            panel.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePanel(id) {
+            const panel = document.getElementById(id);
+            panel.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        const bg = document.querySelector('.background-hearts');
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '♥';
+            heart.style.position = 'absolute';
+            heart.style.color = '#d4af37';
+            heart.style.fontSize = Math.random() * 10 + 8 + 'px';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            heart.style.opacity = Math.random() * 0.4 + 0.1;
+            bg.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
