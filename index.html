@@ -64,7 +64,7 @@
             border-radius: 70px;
             border: 1px solid #d4af37;
             padding: 6px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             position: relative;
             z-index: 1;
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
@@ -86,11 +86,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .photo-placeholder {
-            font-size: 2.5rem;
-            color: #40372c;
         }
 
         @keyframes float {
@@ -117,29 +112,70 @@
         h1 {
             font-family: 'Cinzel', serif;
             font-weight: 400;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #d4af37;
             margin-bottom: 8px;
             letter-spacing: 2px;
             z-index: 1;
+            line-height: 1.3;
         }
 
         .subtitle {
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             color: #a69480;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             z-index: 1;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+
+        /* --- Estilo do Contador de Tempo --- */
+        .counter-container {
+            z-index: 1;
+            width: 100%;
+            background: rgba(26, 24, 22, 0.45);
+            border: 1px solid rgba(51, 43, 33, 0.5);
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        .counter-title {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #a69480;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .counter-time {
+            font-family: 'Cinzel', serif;
+            color: #d4af37;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+        }
+
+        .counter-sub {
+            font-size: 0.7rem;
+            font-style: italic;
+            color: #8c8070;
+            font-weight: 300;
         }
 
         .dedication {
             font-style: italic;
             font-weight: 300;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.7;
             color: #e6dacb;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             padding: 0 10px;
             z-index: 1;
         }
@@ -354,6 +390,14 @@
             height: 100%;
             object-fit: cover;
         }
+
+        /* --- Ajuste para o item final sem foto --- */
+        .timeline-item-future::before {
+            content: '\f500'; /* Ícone de infinito ou duas alianças/pessoas */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #d4af37;
+        }
     </style>
 </head>
 <body>
@@ -374,8 +418,14 @@
         <h1>PARA A MULHER QUE MUDOU O MEU MUNDO</h1>
         <div class="subtitle">Wrap me in your arms and I can't walk away... I wanna say we're forever, I wanna do the things that lovers do.</div>
         
+        <div class="counter-container">
+            <div class="counter-title">Fazem:</div>
+            <div id="counter-display" class="counter-time">00 dias, 00h 00m 00s</div>
+            <div class="counter-sub">que eu tenho o privilégio de te chamar de meu amor.</div>
+        </div>
+
         <div class="dedication">
-            "Feito com todo o carinho para a mulher que é o amor da minha vida."
+            "Feito com todo o carinho para o amor da minha vida."
         </div>
 
         <div class="menu-options">
@@ -470,6 +520,12 @@
                 </div>
             </div>
 
+            <div class="timeline-item timeline-item-future">
+                <div class="timeline-date" style="color: #a69480;">O Futuro</div>
+                <div class="timeline-title">Ainda estamos escrevendo essa parte...</div>
+                <div class="timeline-desc" style="font-style: italic;">...mas tenho certeza de que cada novo capítulo ao seu lado será o meu favorito. EU TE AMO MAIS QUE INFINITOSSSSS INFINITOSSSSS. 🤍</div>
+            </div>
+
         </div>
     </div>
 
@@ -486,6 +542,27 @@
             document.body.style.overflow = 'auto';
         }
 
+        const startDate = new Date('2025-10-31T00:00:00'); 
+
+        function updateCounter() {
+            const now = new Date();
+            const difference = now - startDate;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((difference / (1000 * 60)) % 60);
+            const seconds = Math.floor((difference / 1000) % 60);
+
+            const formatNumber = (num) => num < 10 ? '0' + num : num;
+
+            const counterText = `${days} dias, ${formatNumber(hours)}h ${formatNumber(minutes)}m ${formatNumber(seconds)}s`;
+            document.getElementById('counter-display').textContent = counterText;
+        }
+
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // Corações flutuando no fundo
         const bg = document.querySelector('.background-hearts');
         for (let i = 0; i < 15; i++) {
             const heart = document.createElement('div');
